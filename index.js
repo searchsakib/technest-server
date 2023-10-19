@@ -36,9 +36,9 @@ const productCollection = client.db('productDB').collection('product');
 app.get('/', (req, res) => {
   res.send('TechNest server is LOL!');
 });
-app.get('/products', async (req, res) => {
-  res.send('Getting Product');
-});
+// app.get('/products', async (req, res) => {
+//   res.send('Getting Product');
+// });
 
 app.post('/products', async (req, res) => {
   const newProduct = req.body;
