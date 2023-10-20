@@ -51,6 +51,14 @@ app.get('/products/:id', async (req, res) => {
   res.send(result);
 });
 
+// get for cart
+
+app.get('/cart', async (req, res) => {
+  const cursor = cartCollection.find();
+  const cart = await cursor.toArray();
+  res.send(cart);
+});
+
 app.post('/products', async (req, res) => {
   const newProduct = req.body;
   console.log(newProduct);
