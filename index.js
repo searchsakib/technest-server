@@ -32,6 +32,7 @@ const dbConnect = async () => {
 };
 dbConnect();
 const productCollection = client.db('productDB').collection('product');
+const cartCollection = client.db('productDB').collection('cart');
 
 app.get('/', (req, res) => {
   res.send('TechNest server is LOL!');
@@ -73,6 +74,14 @@ app.put('/products/:id', async (req, res) => {
     },
   };
   const result = await productCollection.updateOne(filter, product, options);
+  res.send(result);
+});
+
+// cart related apis
+app.post('/cart', async (req, res) => {
+  const cart = req.body;
+  console.log(cart);
+  const result = await cartCollection.insertOne(cart);
   res.send(result);
 });
 
