@@ -93,6 +93,14 @@ app.post('/cart', async (req, res) => {
   res.send(result);
 });
 
+// delete from cart
+app.delete('/cart/:id', async (req, res) => {
+  const id = req.params.id;
+  const query = { _id: new ObjectId(id) };
+  const result = await cartCollection.deleteOne(query);
+  res.send(result);
+});
+
 app.listen(port, () => {
   console.log(`TechNest is running on port:${port}`);
 });
